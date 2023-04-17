@@ -8,13 +8,11 @@ namespace Gamob.SpaceShooter.Player
     {
         [SerializeField] private float _speed = 3.5f;
 
-        // Start is called before the first frame update
         void Start()
         {
             transform.position = Vector3.zero;
         }
 
-        // Update is called once per frame
         void Update()
         {
             Move();

@@ -9,12 +9,8 @@ namespace Gamob.SpaceShooter.Player
 
         [SerializeField] private GameObject _laserPrefab;
         [SerializeField] private Transform _shootPosition;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
+        [SerializeField] private float _laserRate = 0.2f;
+        [SerializeField] private float _canShoot = -1f;
 
         // Update is called once per frame
         void Update()
@@ -24,10 +20,16 @@ namespace Gamob.SpaceShooter.Player
 
         private void Shoot()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
             {
+                CoolDownLaser();
                 Instantiate(_laserPrefab, _shootPosition.position, Quaternion.identity);
             }
+        }
+
+        private void CoolDownLaser()
+        {
+            _canShoot = Time.time + _laserRate;
         }
     }
 }
