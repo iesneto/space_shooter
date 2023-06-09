@@ -9,7 +9,7 @@ namespace Gamob.SpaceShooter.Enemy
     {
         [SerializeField] private string _laserTag;
         [SerializeField] private string _playerTag;
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(_playerTag))
             {
