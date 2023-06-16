@@ -397,9 +397,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laserPrefab: {fileID: 4841150897979189871, guid: 752b29f44a26b5e4a95307c7e39b0225, type: 3}
+  _tripleShotPrefab: {fileID: 4130186594836646899, guid: c4c9a35662eb1774fa3f2a7d5d4eccf7, type: 3}
   _shootPosition: {fileID: 142221206}
   _laserRate: 0.5
   _canShoot: -1
+  _isTripleShotActive: 0
 --- !u!114 &490507646
 MonoBehaviour:
   m_ObjectHideFlags: 0
