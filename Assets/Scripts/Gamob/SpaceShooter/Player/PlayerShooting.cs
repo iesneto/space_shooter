@@ -14,8 +14,13 @@ namespace Gamob.SpaceShooter.Player
         [SerializeField] private float _canShoot = -1f;
         [SerializeField] private bool _isTripleShotActive = false;
 
-        // Update is called once per frame
-        void Update()
+        public void ActivateTripleShot()
+        {
+            _isTripleShotActive = true;
+            StartCoroutine(TripleShotPowerDown());
+        }
+
+        private void Update()
         {
             Shoot();
         }
@@ -41,6 +46,12 @@ namespace Gamob.SpaceShooter.Player
         private void CoolDownLaser()
         {
             _canShoot = Time.time + _laserRate;
+        }
+
+        private IEnumerator TripleShotPowerDown()
+        {
+            yield return new WaitForSeconds(5f);
+            _isTripleShotActive = false;
         }
     }
 }
