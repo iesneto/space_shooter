@@ -668,6 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 3344581197547469063, guid: 6114783dc0db61b4d9e6fe5d3d2a0a51, type: 3}
+  _tripleShotPrefab: {fileID: 9144823114078661971, guid: c24d9d1c59f395349aee644db54aec1a, type: 3}
   _enemyFrequency: 5
   _enemyContainer: {fileID: 109872417}
 --- !u!4 &1549155155
