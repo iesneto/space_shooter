@@ -8,9 +8,11 @@ namespace Gamob.SpaceShooter.Player
     {
 
         [SerializeField] private GameObject _laserPrefab;
+        [SerializeField] private GameObject _tripleShotPrefab;
         [SerializeField] private Transform _shootPosition;
         [SerializeField] private float _laserRate = 0.2f;
         [SerializeField] private float _canShoot = -1f;
+        [SerializeField] private bool _isTripleShotActive = false;
 
         // Update is called once per frame
         void Update()
@@ -23,7 +25,16 @@ namespace Gamob.SpaceShooter.Player
             if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canShoot)
             {
                 CoolDownLaser();
-                Instantiate(_laserPrefab, _shootPosition.position, Quaternion.identity);
+
+                if (_isTripleShotActive)
+                {
+                    Instantiate(_tripleShotPrefab, _shootPosition.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(_laserPrefab, _shootPosition.position, Quaternion.identity);
+                }
+
             }
         }
 
