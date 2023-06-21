@@ -7,13 +7,20 @@ namespace Gamob.SpaceShooter.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _speed = 3.5f;
+        [SerializeField] private float _speedMultiplier = 2.0f;
 
-        void Start()
+        public void ActivateSpeedBoost()
+        {
+            _speed *= _speedMultiplier;
+            StartCoroutine(SpeedBoostPowerDown());
+        }
+
+        private void Start()
         {
             transform.position = Vector3.zero;
         }
 
-        void Update()
+        private void Update()
         {
             Move();
             CheckBounds();
@@ -26,7 +33,7 @@ namespace Gamob.SpaceShooter.Player
 
             Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-            transform.Translate(direction * _speed * Time.deltaTime);
+            transform.Translate(_speed * Time.deltaTime * direction);
         }
 
         private void CheckBounds()
@@ -42,6 +49,12 @@ namespace Gamob.SpaceShooter.Player
                 transform.position = new Vector3(11.3f, transform.position.y, 0);
             }
 
+        }
+
+        private IEnumerator SpeedBoostPowerDown()
+        {
+            yield return new WaitForSeconds(5f);
+            _speed /= _speedMultiplier;
         }
     }
 }
