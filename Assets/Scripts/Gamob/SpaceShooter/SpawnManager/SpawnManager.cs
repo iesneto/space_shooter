@@ -7,7 +7,7 @@ namespace Gamob.SpaceShooter.Spawn
     public class SpawnManager : MonoBehaviour
     {
         [SerializeField] private GameObject _enemyPrefab;
-        [SerializeField] private GameObject _tripleShotPrefab;
+        [SerializeField] private List<GameObject> _powerUps;
         [SerializeField] private float _enemyFrequency;
         [SerializeField] private Transform _enemyContainer;
         private bool _stopSpawning = false;
@@ -21,7 +21,7 @@ namespace Gamob.SpaceShooter.Spawn
         private void Start()
         {
             StartCoroutine(SpawnEnemy());
-            StartCoroutine(SpawnTripleShot());
+            StartCoroutine(SpawnPowerup());
         }
 
         private IEnumerator SpawnEnemy()
@@ -35,12 +35,13 @@ namespace Gamob.SpaceShooter.Spawn
             }
         }
 
-        private IEnumerator SpawnTripleShot()
+        private IEnumerator SpawnPowerup()
         {
             while (!_stopSpawning)
             {
                 Vector3 positionToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-                Instantiate(_tripleShotPrefab, positionToSpawn, Quaternion.identity);
+                int randomPowerUp = Random.Range(0, _powerUps.Count);
+                Instantiate(_powerUps[randomPowerUp], positionToSpawn, Quaternion.identity);
                 yield return new WaitForSeconds(Random.Range(7, 11));
             }
         }
