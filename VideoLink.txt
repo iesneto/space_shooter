@@ -1,1 +1,1 @@
-https://github.com/iesneto/space_shooter/blob/9d27a84a113817e876315beb4a2ab49fa047850f/video01.mp4
+https://github.com/iesneto/space_shooter/raw/refs/heads/master/video01.mp4
